@@ -1,0 +1,66 @@
+                                                   EXPERIMENT 1.1 Contains Duplicate(217)
+                                                  
+AIM: Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.
+
+ALGORITHM:
+i) Take the input array nums.
+
+ii) Sort the array in ascending order using nums.sort().
+
+iii) Traverse the sorted array from index 1 to len(nums) - 1.
+
+iv) For each index i, compare the current element nums[i] with the previous element nums[i - 1].
+
+v) If nums[i] == nums[i - 1], it means a duplicate element is found.
+
+vi) Return True immediately.
+
+vii) If the loop finishes without finding any duplicate, return False.
+
+CODE:
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        nums.sort()
+
+        for i in range(1,len(nums)):
+            if nums[i]==nums[i-1]:
+                return True
+        return False
+
+
+                                                   EXPERIMENT 1.2 Contains Duplicate(II)(219)
+
+AIM: Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.
+
+ALGORITHM: 
+i) Take the input array nums and integer k.
+
+ii) Create an empty dictionary seen to store each element and its latest index.
+
+iii) Traverse the array from index 0 to len(nums) - 1.
+
+iv) For each element nums[i], check if it already exists in the dictionary seen.
+
+v) If it exists, calculate the distance between the current index and the previous index: i - seen[nums[i]]
+
+vi) If the distance is less than or equal to k, return True because a nearby duplicate is found.
+
+vii) Update the dictionary with the current index: seen[nums[i]] = i.This ensures the dictionary always stores the most recent occurrence of the element.
+
+viii) Repeat Steps 5–8 until all elements are checked.
+
+ix) If no nearby duplicate is found after traversing the entire array, return False.
+
+CODE:
+class Solution:
+    def containsNearbyDuplicate(self, nums: List[int], k: int) -> bool:
+        seen={}
+        for i in range (len(nums)):
+            if nums[i] in seen:
+                if i-seen[nums[i]]<=k:
+                    return True
+
+            seen[nums[i]]=i
+
+        return False
+        
