@@ -1,0 +1,83 @@
+                                                   EXPERIMENT 2.1 Search Insert Position(35)
+
+AIM: To implement the Binary Search algorithm to find the index of a given target element in a sorted array. 
+If the target is not present, return the index where it should be inserted to maintain the sorted order, with 
+O(log n) time complexity.
+
+ALGORITHM: 
+i) Start the program.
+
+ii) Initialize left = 0 and right = len(nums) - 1.
+
+iii) Repeat the following steps while left <= right.
+
+iv) Calculate the middle index as mid = (left + right) // 2.
+
+v) If nums[mid] is equal to target, return mid.
+
+vi) If nums[mid] is less than target, set left = mid + 1; otherwise, set right = mid - 1.
+
+vii) When the loop ends, return left as the correct insertion position of the target.
+
+viii) Stop the program.
+
+CODE:
+class Solution:
+    def searchInsert(self, nums: List[int], target: int) -> int:
+        left=0
+        right=len(nums)-1
+        while left<=right:
+            mid=(left+right)//2
+            if target==nums[mid]:
+                return mid
+
+            elif nums[mid]<target:
+                left=mid+1
+            
+            else:
+                right=mid-1
+
+        return left
+
+
+                                                   EXPERIMENT 2.2 Implement Queue Using Stacks(232)
+
+AIM: To implement a First In First Out (FIFO) Queue using two stacks and perform the operations push, pop, peek, and empty efficiently.
+
+ALGORITHM:
+i) Start the program.
+
+ii) Create two empty stacks, S1 and S2.
+
+iii) To insert an element, push it onto S1.
+
+iv) To remove or view the front element, transfer all elements from S1 to S2 if S2 is empty, and then perform the required operation on S2.
+
+v) To check whether the queue is empty, verify that both S1 and S2 are empty.
+
+vi) Stop the program.
+
+CODE:
+class MyQueue:
+
+    def __init__(self):
+        self.s1 = []
+        self.s2 = []
+
+    def push(self, x: int) -> None:
+        self.s1.append(x)
+
+    def pop(self) -> int:
+        if not self.s2:
+            while self.s1:
+                self.s2.append(self.s1.pop())
+        return self.s2.pop()
+
+    def peek(self) -> int:
+        if not self.s2:
+            while self.s1:
+                self.s2.append(self.s1.pop())
+        return self.s2[-1]
+
+    def empty(self) -> bool:
+        return len(self.s1) == 0 and len(self.s2) == 0
