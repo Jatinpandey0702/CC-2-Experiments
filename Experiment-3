@@ -1,0 +1,85 @@
+                                                     EXPERIMENT 3.1 Search in Rotated Sorted Array(33)
+
+AIM: To implement an efficient Binary Search algorithm to find a target element in a rotated sorted array with O(log n) time complexity.
+
+ALGORITHM:
+i)Start the program.
+
+ii)Initialize two pointers, left = 0 and right = len(nums) - 1.
+
+iii)Repeat the process while left <= right.
+
+iv)Calculate the middle index as mid = (left + right) // 2.
+
+v)If the middle element is equal to the target, return its index.
+
+vi)If the left half is sorted, check whether the target lies in that half and update left or right accordingly.
+
+vii)Otherwise, the right half is sorted, so check whether the target lies in that half and update left or right accordingly.
+
+viii)If the target is not found after the loop ends, return -1.
+
+ix)Stop the program.
+
+CODE: 
+from typing import List
+
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        left, right = 0, len(nums) - 1
+
+        while left <= right:
+            mid = (left + right) // 2
+
+            if nums[mid] == target:
+                return mid
+
+            # Left half is sorted
+            if nums[left] <= nums[mid]:
+                if nums[left] <= target < nums[mid]:
+                    right = mid - 1
+                else:
+                    left = mid + 1
+
+            # Right half is sorted
+            else:
+                if nums[mid] < target <= nums[right]:
+                    left = mid + 1
+                else:
+                    right = mid - 1
+
+        return -1
+
+
+                                                   EXPERIMENT 3.2 Middle of the Linked List(876)
+
+AIM: To find and return the middle node of a singly linked list using the two-pointer (slow and fast pointer) technique with O(n) time complexity and O(1) space complexity.
+
+ALGORITHM:
+i)Start the program.
+
+ii)Initialize two pointers, slow and fast, at the head of the linked list.
+
+iii)Move slow one node and fast two nodes forward while fast and fast.next are not None.
+
+iv)When the loop ends, return the node pointed to by slow as the middle node.
+
+v))Stop the program.
+
+CODE:
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+
+class Solution:
+    def middleNode(self, head: ListNode) -> ListNode:
+        slow = head
+        fast = head
+
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+
+        return slow
