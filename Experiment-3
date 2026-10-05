@@ -2,6 +2,7 @@
 
 AIM: To implement an efficient Binary Search algorithm to find a target element in a rotated sorted array with O(log n) time complexity.
 
+
 ALGORITHM:
 i)Start the program.
 
