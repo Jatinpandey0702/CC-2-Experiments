@@ -4,6 +4,7 @@ AIM: To implement the Binary Search algorithm to find the index of a given targe
 If the target is not present, return the index where it should be inserted to maintain the sorted order, with 
 O(log n) time complexity.
 
+
 ALGORITHM: 
 i) Start the program.
 
