@@ -1,4 +1,4 @@
-                                                     EXPERIMENT 3.1 Search in Rotated Sorted Array(33)
+                                                     EXPERIMENT 3 Search in Rotated Sorted Array(33)
 
 AIM: To implement an efficient Binary Search algorithm to find a target element in a rotated sorted array with O(log n) time complexity.
 
@@ -49,37 +49,3 @@ class Solution:
                     right = mid - 1
 
         return -1
-
-
-                                                   EXPERIMENT 3.2 Middle of the Linked List(876)
-
-AIM: To find and return the middle node of a singly linked list using the two-pointer (slow and fast pointer) technique with O(n) time complexity and O(1) space complexity.
-
-ALGORITHM:
-i)Start the program.
-
-ii)Initialize two pointers, slow and fast, at the head of the linked list.
-
-iii)Move slow one node and fast two nodes forward while fast and fast.next are not None.
-
-iv)When the loop ends, return the node pointed to by slow as the middle node.
-
-v))Stop the program.
-
-CODE:
-# Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, val=0, next=None):
-#         self.val = val
-#         self.next = next
-
-class Solution:
-    def middleNode(self, head: ListNode) -> ListNode:
-        slow = head
-        fast = head
-
-        while fast and fast.next:
-            slow = slow.next
-            fast = fast.next.next
-
-        return slow
