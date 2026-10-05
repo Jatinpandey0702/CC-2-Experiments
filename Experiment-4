@@ -13,6 +13,7 @@ vii) If any two values are different, return False.
 viii) If all corresponding values are equal, return True.
 ix) Stop the program.
 
+
 CODE:
 class Solution:
     def isPalindrome(self, head: ListNode | None) -> bool:
